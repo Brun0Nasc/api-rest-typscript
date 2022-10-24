@@ -2,6 +2,7 @@ import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGenerated
 import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 import moment from 'moment-timezone';
 import { Chave } from "./Chave";
+import { Transacao } from "./Transacao";
 
 @Entity('usuarios')
 export class Usuario {
@@ -28,6 +29,12 @@ export class Usuario {
 
     @OneToMany(() => Chave, (chave) => chave.usuario)
     chaves: Chave[]
+
+    @OneToMany(() => Transacao, (transacao_envia) => transacao_envia.de_usuario)
+    transacao_envia: Transacao[]
+
+    @OneToMany(() => Transacao, (transacao_recebe) => transacao_recebe.para_usuario)
+    transacao_recebe: Transacao[]
 
     @BeforeInsert()
     insertCreated() {
