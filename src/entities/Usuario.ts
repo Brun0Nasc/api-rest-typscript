@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 import moment from 'moment-timezone';
 import { Chave } from "./Chave";
@@ -15,6 +15,7 @@ export class Usuario {
     @Column({ length: 16, nullable: false })
     telefone: string
 
+    @Index({ unique: true })
     @Column({ length: 100, nullable: false })
     email: string
 

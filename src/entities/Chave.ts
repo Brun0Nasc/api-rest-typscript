@@ -1,4 +1,4 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 import moment from 'moment-timezone';
 import { Usuario } from "./Usuario";
@@ -8,6 +8,7 @@ export class Chave {
     @PrimaryGeneratedColumn()
     id: number
 
+    @Index({ unique: true })
     @Column({ type: 'text', nullable: false })
     valor_chave: string
 
