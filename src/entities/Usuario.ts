@@ -24,7 +24,7 @@ export class Usuario {
     @UpdateDateColumn()
     updated_at: Date
 
-    @Column()
+    @Column({ nullable: true })
     deleted_at: Date
 
     @OneToMany(() => Chave, (chave) => chave.usuario)

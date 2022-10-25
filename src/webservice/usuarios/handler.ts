@@ -11,12 +11,14 @@ export class UsuariosHandler {
 
         try {
             const newUsuario = usuarioRepository.create({
-                nome:'nome',
-                telefone:'telefone',
-                email:'email'
+                nome:nome,
+                telefone:telefone,
+                email:email
             })
 
-            console.log(newUsuario)
+            await usuarioRepository.save(newUsuario)
+
+            return res.status(201).json(newUsuario)
         } catch (error) {
             console.log(error);
             return res.status(500).json({ message: 'Internal server error' })
