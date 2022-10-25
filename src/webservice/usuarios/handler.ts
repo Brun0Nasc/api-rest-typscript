@@ -1,18 +1,25 @@
 import { Request, Response } from "express";
+import { usuarioRepository } from "../../repositories/usuarioRepository";
 
 export class UsuariosHandler {
     async create(req: Request, res: Response) {
-        const {nome, email} = req.body
+        const { nome, telefone, email } = req.body
 
-        if (!nome || !email) {
-            return res.status(400).json({message: 'passe os campos obrigatorios'})
+        if (!nome || !telefone || !email) {
+            return res.status(400).json({ message: 'passe os campos obrigatorios' })
         }
 
-        try{
+        try {
+            const newUsuario = usuarioRepository.create({
+                nome:'nome',
+                telefone:'telefone',
+                email:'email'
+            })
 
+            console.log(newUsuario)
         } catch (error) {
             console.log(error);
-            return res.status(500).json({message: 'Internal server error'})
+            return res.status(500).json({ message: 'Internal server error' })
         }
     }
 }
