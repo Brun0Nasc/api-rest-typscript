@@ -21,7 +21,7 @@ export class Chave {
     @UpdateDateColumn()
     updated_at: Date
 
-    @Column()
+    @Column({nullable: true})
     deleted_at: Date
 
     @BeforeInsert()
